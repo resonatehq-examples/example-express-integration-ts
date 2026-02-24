@@ -1,0 +1,21 @@
+{
+  "name": "example-express-integration-ts",
+  "version": "1.0.0",
+  "description": "Durable background workflows from an Express REST API — powered by Resonate",
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "start:crash": "tsx src/index.ts --crash",
+    "dev": "tsx watch src/index.ts"
+  },
+  "dependencies": {
+    "@resonatehq/sdk": "^0.9.6",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.0",
+    "tsx": "^4.20.3",
+    "typescript": "^5.7.3"
+  }
+}
