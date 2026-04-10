@@ -9,7 +9,7 @@
     "dev": "tsx watch src/index.ts"
   },
   "dependencies": {
-    "@resonatehq/sdk": "^0.9.6",
+    "@resonatehq/sdk": "^0.10.0",
     "express": "^4.21.2"
   },
   "devDependencies": {
