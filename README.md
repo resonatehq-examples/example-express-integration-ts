@@ -1,5 +1,9 @@
 <p align="center">
-  <img src="./assets/banner.png" alt="Express Integration — Resonate example" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/banner-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="./assets/banner-light.png">
+    <img alt="Express Integration — Resonate example" src="./assets/banner-dark.png">
+  </picture>
 </p>
 
 # Express + Resonate Integration
