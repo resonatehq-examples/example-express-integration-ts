@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="./assets/banner.png" alt="Express Integration — Resonate example" />
+</p>
+
 # Express + Resonate Integration
 
 Durable background workflows from a REST API — powered by Resonate.
