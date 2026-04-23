@@ -1,3 +1,11 @@
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/banner-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="./assets/banner-light.png">
+    <img alt="Express Integration — Resonate example" src="./assets/banner-dark.png">
+  </picture>
+</p>
+
 # Express + Resonate Integration
 
 Durable background workflows from a REST API — powered by Resonate.
