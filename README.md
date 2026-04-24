@@ -49,7 +49,7 @@ app.get("/orders/:id/status", async (req, res) => {
 });
 ```
 
-**Compare to Inngest:** Inngest requires you to mount a `/api/inngest` route handler, define functions with `inngest.createFunction()`, and emit events with `inngest.send()`. With Resonate, you call `resonate.run()` directly from your route — no event schema, no serve endpoint, no discovery protocol.
+**Why this shape:** the workflow is a plain generator function. `resonate.run()` is called directly from the route handler with the order ID as the idempotency key. No dedicated route mount, no event schema, no separate discovery protocol — just a function call that happens to be durable.
 
 ## How it works
 
@@ -114,15 +114,15 @@ src/
   handlers.ts   — Business logic functions (validate, reserve, charge, email)
 ```
 
-## Compared to Inngest
+## The integration surface
 
-| | Inngest | Resonate |
-|---|---------|----------|
-| **Mount point** | `app.use("/api/inngest", serve(...))` | None — call `resonate.run()` directly |
-| **Trigger events** | `inngest.send({ name: "order/created", data })` | `resonate.run("order/id", fn, args)` |
-| **Define functions** | `inngest.createFunction({ id, event }, handler)` | Plain generator functions |
-| **Idempotency key** | Provided in event or `idempotencyKey` option | Promise ID: first arg to `resonate.run()` |
-| **External service** | Inngest cloud or self-hosted | Embedded in your process (or Resonate server) |
-| **Framework support** | 15+ adapters (Next.js, Express, Remix...) | Call `resonate.run()` from any framework |
+| | |
+|---|---|
+| **Mount point** | None — `resonate.run()` is called directly from any route |
+| **Trigger** | `resonate.run("order/id", fn, args)` — the first arg is the idempotency key |
+| **Function shape** | Plain generator function; no registration decorator, no event schema |
+| **Idempotency** | Same promise ID → same execution; deduplicated automatically |
+| **Runtime** | Embedded in the Express process, or connected to a Resonate server for multi-process durability |
+| **Framework support** | Any Node.js HTTP framework — no per-framework adapter |
 
 [Try Resonate →](https://resonatehq.io) · [Resonate SDK →](https://github.com/resonatehq/resonate-sdk-ts)
